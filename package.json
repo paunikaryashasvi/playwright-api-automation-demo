@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test-dev": "TEST_ENV=dev npx playwright test && npx playwright show-report",
-    "test-sit": "TEST_ENV=sit npx playwright test && npx playwright show-report",
-    "test-uat": "TEST_ENV=uat npx playwright test && npx playwright show-report"
+    "test-dev": "set TEST_ENV=dev && npx playwright test && npx playwright show-report",
+    "test-sit": "set TEST_ENV=sit && npx playwright test && npx playwright show-report"
   },
   "keywords": [
     "playwright",
@@ -17,6 +16,8 @@
   "author": "Osanda Nimalarathna",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.13.6",
+    "dotenv": "^17.3.1",
     "playwright": "^1.42.1"
   },
   "devDependencies": {

@@ -11,7 +11,7 @@ test.describe("Booking Test Suite", () => {
   let bookingId: string;
 
   test.beforeAll(async ({ authApiFixture, commonApiFixture }) => {
-    const authResponse = await authApiFixture.post('', AUTH_REQUEST_JSON_BODY);
+    const authResponse = await authApiFixture.post('/auth', AUTH_REQUEST_JSON_BODY);
     expect(authResponse.status()).toBe(200);
     token = (await authResponse.json()).token;
 

@@ -9,11 +9,11 @@ type MyFixtures = {
 
 const fixtures = base.extend<MyFixtures>({
   authApiFixture: async ({ request }, use) => {
-    const API = new APIClient(request, config.authApiUrl);
+    const API = new APIClient(request, process.env.API_BASE_URL || config.baseApiUrl);
     await use(API);
   },
   commonApiFixture: async ({ request }, use) => {
-    const API = new APIClient(request, config.baseApiUrl);
+    const API = new APIClient(request, process.env.API_BASE_URL || config.baseApiUrl);
     await use(API);
   },
 });

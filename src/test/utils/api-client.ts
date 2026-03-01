@@ -1,4 +1,5 @@
 import { APIRequestContext } from "playwright-core";
+import axios from 'axios';
 
 export default class APIClient {
   private request: APIRequestContext;
@@ -46,7 +47,26 @@ export default class APIClient {
 
     const requestUrl = endpoint ? this.baseUrl.concat(endpoint) : this.baseUrl;
 
-    const response = await this.request[method](requestUrl, requestOptions);
+    let response;
+    switch (method) {
+      case "get":
+        response = await this.request.get(requestUrl, requestOptions);
+        break;
+      case "post":
+        response = await this.request.post(requestUrl, requestOptions);
+        break;
+      case "put":
+        response = await this.request.put(requestUrl, requestOptions);
+        break;
+      case "patch":
+        response = await this.request.patch(requestUrl, requestOptions);
+        break;
+      case "delete":
+        response = await this.request.delete(requestUrl, requestOptions);
+        break;
+      default:
+        throw new Error(`Unsupported method: ${method}`);
+    }
 
     console.log(`Response: [${method.toUpperCase()}] ${response.url()}`);
 
@@ -60,4 +80,9 @@ export default class APIClient {
 
     return response;
   }
+}
+
+export async function getBookingList() {
+  const response = await axios.get('https://your-api-url.com/bookings');
+  return response.data;
 }

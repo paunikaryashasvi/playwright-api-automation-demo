@@ -24,11 +24,11 @@ When working on a project with multiple test environments such as Development (D
 The configuration is defined using TypeScript interfaces and objects, allowing for easy management and customization based on the specific requirements of each environment.
 
 ### Usage
-- **Environment-Specific URLs:** Each environment (dev, sit, uat) has its own set of authentication API URL and base API URL. These URLs are defined in the respective configuration objects (`devConfig`, `sitConfig`, `uatConfig`).
+- **Environment-Specific URLs:** Each environment (dev, sit) has its own set of authentication API URL and base API URL. These URLs are defined in the respective configuration objects (`devConfig`, `sitConfig`).
 - **Test Data Directory:** Environment-specific test data can be found in the `/src/test/resources/` directory, organized under separate subdirectories for each environment.
 
 ### Customization
-To add or modify configurations for additional environments, simply create a new configuration object following the same structure as `devConfig`, `sitConfig`, and `uatConfig`. Update the `config` object based on the desired environment selected during test execution.
+To add or modify configurations for additional environments, simply create a new configuration object following the same structure as `devConfig` and `sitConfig`. Update the `config` object based on the desired environment selected during test execution.
 
 ### Execute Tests
 To run your automated API tests aginst DEV environment, use the following command:

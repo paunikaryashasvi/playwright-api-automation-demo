@@ -1,4 +1,5 @@
 import { devices, PlaywrightTestConfig } from "@playwright/test";
+import 'dotenv/config';
 
 interface TestConfig extends PlaywrightTestConfig {
   authApiUrl: string;
@@ -38,11 +39,6 @@ const sitConfig: TestConfig = {
   testDataDir: "./src/test/resources/sit",
 };
 
-const uatConfig: TestConfig = {
-  authApiUrl: "https://restful-booker.herokuapp.com/auth",
-  baseApiUrl: "https://restful-booker.herokuapp.com",
-  testDataDir: "./src/test/resources/uat",
-};
 
 // Get the environment from command line. If none, set it to dev
 const environment = process.env.TEST_ENV || "dev";
@@ -50,11 +46,7 @@ const environment = process.env.TEST_ENV || "dev";
 // Config object with default configuration and environment specific configuration
 const config: TestConfig = {
   ...defaultConfig,
-  ...(environment === "sit"
-    ? sitConfig
-    : environment === "uat"
-    ? uatConfig
-    : devConfig),
+  ...(environment === "sit" ? sitConfig : devConfig),
 };
 
 export default config;

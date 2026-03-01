@@ -6,7 +6,7 @@ test.describe("Authentication Test Suite", () => {
   test("[POST] Request new authentication token", async ({
     authApiFixture,
   }) => {
-    const response = await authApiFixture.post('', AUTH_REQUEST_JSON_BODY);
+    const response = await authApiFixture.post('/auth', AUTH_REQUEST_JSON_BODY);
     expect(response.status()).toBe(200);
     expect((await response.json()).token).not.toBeNull();
   });
